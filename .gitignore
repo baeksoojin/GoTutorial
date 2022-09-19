@@ -1,0 +1,4 @@
+prometheus_data
+grafana.db
+prometheus/grafana/*
+!prometheus/grafana/provisioning/
