@@ -2,13 +2,17 @@ package main
 
 import (
 	tutorial "example/pkg/tutorial"
+	"fmt"
+	"github.com/spf13/pflag"
 	"sync"
 )
 
 func main() {
 
-	// goroutine ex
+	//flag ex
+	flags := pflag.NewFlagSet("", pflag.ExitOnError)
 
+	// goroutine ex
 	wg := sync.WaitGroup{} // WaitGroup 생성
 	go func() {
 		wg.Add(1) //waitgroup이 가진 값을 arg만큼 증가
@@ -25,21 +29,14 @@ func main() {
 		defer wg.Done()
 		tutorial.Say("hello")
 	}()
+	go func() { //test flags
+		wg.Add(1) //waitgroup이 가진 값을 arg만큼 증가
+		defer wg.Done()
+		t := tutorial.NewSet(flags)
+		fmt.Println("get value", t.GetValue())
+	}()
 	tutorial.Say("world")
 
 	wg.Wait() //wg.Done으로 WaitGroup 객체가 모두 종료될때까지 기다린다.
-
-	//// ex
-	//v := tutorial.Vertex{3, 4}
-	//fmt.Println(v.Abs())
-	//
-	//// add function
-	//v.Add()
-	//fmt.Println(v)
-	//fmt.Println(v.Abs())
-	////subtraction function
-	//v.Sub()
-	//fmt.Println(v)
-	//fmt.Println(v.Abs())
 
 }
