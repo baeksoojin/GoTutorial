@@ -24,7 +24,6 @@ func (t2 *Test2) Parse() error {
 func (t2 *Test2) GetValue() string {
 
 	t2.AddFlags()
-	t2.Parse()
 	return t2.Testvalue
 }
 

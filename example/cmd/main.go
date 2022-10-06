@@ -41,7 +41,7 @@ func main() {
 		t2 := tutorial.NewSet2(flags)
 		fmt.Println("get value2", t2.GetValue())
 	}()
-	tutorial.Say("world")
+	tutorial.Say("skjfjdfjkdjfjkjkjkjjk")
 
 	wg.Wait() //wg.Done으로 WaitGroup 객체가 모두 종료될때까지 기다린다.
 
